@@ -18,7 +18,9 @@ app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use("/", express.static(path.join(__dirname, "public")));
 app.use("/", require("./routes/root"));
-
+app.use("/users", require("./routes/userRouter"));
+app.use("/notes", require("./routes/noteRouter"));
+//404 route
 app.all("*", (req, res) => {
   res.status(404);
   if (req.accepts("html")) {

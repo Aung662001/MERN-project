@@ -1,0 +1,10 @@
+2023-07-04/22:27:38	94481148-07ba-4f4d-b13d-3e920dfb1b18	Error:Not Allow By CORS!	undefined	/	undefined
+2023-07-04/22:28:23	c701e8f6-0131-4dfd-aff8-f1beb0441572	Error:Not Allow By CORS!	undefined	/	https://expressjs.com
+2023-07-04/22:28:23	6b28df70-50e2-475c-9446-f7701c0637a9	Error:Not Allow By CORS!	undefined	/	https://expressjs.com
+2023-07-07/17:47:14	0e525b6c-8d5b-43c0-b8cc-7fe402e8331a	ReferenceError:passowrd is not defined	undefined	/users	undefined
+2023-07-07/17:50:08	cd7fc000-1491-4e51-a789-3bb791f02688	ValidationError:Note validation failed: text: Path `text` is required., title: Path `title` is required., user: Path `user` is required.	undefined	/users	undefined
+2023-07-07/17:51:30	001d0f76-8fc9-41d0-8139-f44246830a9c	ValidationError:User validation failed: userName: Path `userName` is required.	undefined	/users	undefined
+2023-07-07/17:58:59	d798f0b4-05d4-4668-afff-dbd74b45b1b5	TypeError:User.findOne(...).exec(...).lean is not a function	undefined	/users	undefined
+2023-07-07/18:09:48	0dee71b6-e674-4fdc-9b3e-02001088f570	TypeError:Note.findOne(...).exec(...).lean is not a function	undefined	/users	undefined
+2023-07-07/18:12:27	0a856b70-80f3-4e33-a511-31e97258aa81	SyntaxError:Unexpected token } in JSON at position 49	undefined	/users	undefined
+2023-07-07/18:13:49	4d2e49de-ba73-4b84-ad4e-ab0c2aa6ec1d	SyntaxError:Unexpected token } in JSON at position 49	undefined	/users	undefined

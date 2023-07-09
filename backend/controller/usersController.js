@@ -1,0 +1,92 @@
+const Note = require("../models/Note");
+const User = require("../models/User");
+const asyncHandler = require("express-async-handler");
+const bcrypt = require("bcrypt");
+
+const getAllUsers = asyncHandler(async (req, res) => {
+  const users = await User.find().select("-password").lean();
+  if (!users?.length) {
+    return res.status(400).json({ message: "No user found!" });
+  }
+  res.json(users);
+});
+const createNewUser = asyncHandler(async (req, res) => {
+  const { username, password, role } = req.body;
+  //data validate
+  if (!username || !password || !Array.isArray(role) || !role.length) {
+    return res.status(400).json({ message: "All fields are require." });
+  }
+  //check for duplicate
+  const duplicate = await User.findOne({ username }).lean().exec();
+
+  if (duplicate) {
+    return res.status(409).json({ message: "User already exists." });
+  }
+
+  //password hash
+  const hashPassword = await bcrypt.hash(password, 10);
+
+  const userObj = { username, password: hashPassword, role };
+
+  //create new user
+  const user = await User.create(userObj);
+  if (user) {
+    //created
+    res.status(201).json({ message: `New User ${username} is created.` });
+  } else {
+    res.status(400).json({ message: "Invalid User data Received." });
+  }
+});
+const updateUser = asyncHandler(async (req, res) => {
+  const { id, username, role, active, password } = req.body;
+  //data validation
+  if (
+    !id ||
+    !username ||
+    !Array.isArray(role) ||
+    !role.length ||
+    typeof active !== "boolean"
+  ) {
+    return res.status(400).json({ message: "Invalid user data" });
+  }
+  const user = await User.findById(id).exec();
+  if (!user) {
+    return res.status(400).json({ message: "User Not Found." });
+  }
+  //duplicate
+  const duplicate = await User.findOne({ username }).lean().exec();
+  if (duplicate && duplicate?._id.toString() !== id) {
+    return res.status(409).json({ message: `UserName Already Exists.` });
+  }
+  user.username = username;
+  user.role = role;
+  user.active = active;
+
+  if (password) {
+    //hash password
+    user.passowrd = await bcrypt(password, 10);
+  }
+  const updatedUser = await user.save();
+  res.json({ message: `${updatedUser.username} updated.` });
+});
+const deleteUser = asyncHandler(async (req, res) => {
+  const { id } = req.body;
+  if (!id) return res.status(400).json({ message: " User id not Found" });
+  //if notes is exists , user cann't delete
+  const note = await Note.findOne({ user: id }).lean().exec();
+  if (note) {
+    return res.status(400).json({ message: "User has assigned note." });
+  }
+  //if note is no assigned , delete that user
+  const user = await User.findById(id).exec();
+  if (!user) {
+    //user no found in database
+    return res.status(400).json({ message: "User not found" });
+  }
+  const result = await user.deleteOne();
+
+  const reply = `Username ${result.username} with Id  ${result._id} deleted`;
+  res.json(reply);
+});
+
+module.exports = { getAllUsers, createNewUser, updateUser, deleteUser };
