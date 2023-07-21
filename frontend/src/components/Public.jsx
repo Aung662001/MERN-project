@@ -2,18 +2,18 @@ import { Link } from "react-router-dom";
 
 const Public = () => {
   const content = (
-    <section>
+    <section className="public">
       <header>
         <h1>
-          Wellcome to <span>Phone Doctor. Repair!</span>
+          Wellcome to <span className="nowrap"> Phone Doctor. Repair!</span>
         </h1>
       </header>
-      <main>
+      <main className="public__main">
         <p>
           Located in most convient for travel, Hlae dan Center , Phone Doctor
           already have many doctors that know all about your phone!
         </p>
-        <address>
+        <address className="public__addr">
           Phone Doctor Repair!
           <br />
           Nort of HlaeDan Center
@@ -26,7 +26,7 @@ const Public = () => {
         <p>Owner : U Aung</p>
       </main>
       <footer>
-        <Link to="/login">Employee Login</Link>
+        <Link to="login">Employee Login</Link>
       </footer>
     </section>
   );
