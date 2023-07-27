@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 const DashHeader = () => {
   return (
-    <header>
+    <header className="dash-header">
       <div className="dash-header__container">
-        <Link to="/dash/notes">
+        <Link to="/dash">
           <h1 className="dash-headerd__title">techNotes</h1>
         </Link>
         <nav className="dash-header__nav">{/* nav items */}</nav>
