@@ -17,21 +17,27 @@ const getAllNotes = asyncHandler(async (req, res) => {
 });
 const createNewNotes = asyncHandler(async (req, res) => {
   const { user, title, text } = req.body;
+  console.log(req.body);
   //data vilaidation
+  console.log("validation data");
   if (!user || !title || !text) {
     return res.status(400).json({ message: "All fields are required" });
   }
   //duplicate check
+  console.log("check duplicate");
   const duplicate = await Note.findOne({ title }).lean().exec();
 
   if (duplicate) {
+    console.log("duplicate");
     return res.status(400).json({ message: "Note Title already exists" });
   }
   //create new note
+  console.log("creationg note");
   const note = await Note.create({ user, title, text });
-
+  console.log(note, "created note");
   if (note) {
     //created successfull
+    console.log("note created");
     return res.status(201).json({ message: "New Note Created" });
   } else {
     return res.status(400).json({ message: "Invalid Note Data Received" });

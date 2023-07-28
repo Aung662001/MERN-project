@@ -11,9 +11,9 @@ const getAllUsers = asyncHandler(async (req, res) => {
   res.json(users);
 });
 const createNewUser = asyncHandler(async (req, res) => {
-  const { username, password, role } = req.body;
+  const { username, password, roles } = req.body;
   //data validate
-  if (!username || !password || !Array.isArray(role) || !role.length) {
+  if (!username || !password || !Array.isArray(roles) || !roles.length) {
     return res.status(400).json({ message: "All fields are require." });
   }
   //check for duplicate
@@ -26,7 +26,7 @@ const createNewUser = asyncHandler(async (req, res) => {
   //password hash
   const hashPassword = await bcrypt.hash(password, 10);
 
-  const userObj = { username, password: hashPassword, role };
+  const userObj = { username, password: hashPassword, roles };
 
   //create new user
   const user = await User.create(userObj);
@@ -38,13 +38,13 @@ const createNewUser = asyncHandler(async (req, res) => {
   }
 });
 const updateUser = asyncHandler(async (req, res) => {
-  const { id, username, role, active, password } = req.body;
+  const { id, username, roles, active, password } = req.body;
   //data validation
   if (
     !id ||
     !username ||
-    !Array.isArray(role) ||
-    !role.length ||
+    !Array.isArray(roles) ||
+    !roles.length ||
     typeof active !== "boolean"
   ) {
     return res.status(400).json({ message: "Invalid user data" });
@@ -59,7 +59,7 @@ const updateUser = asyncHandler(async (req, res) => {
     return res.status(409).json({ message: `UserName Already Exists.` });
   }
   user.username = username;
-  user.role = role;
+  user.roles = roles;
   user.active = active;
 
   if (password) {

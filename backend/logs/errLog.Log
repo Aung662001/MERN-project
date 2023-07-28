@@ -8,3 +8,9 @@
 2023-07-07/18:09:48	0dee71b6-e674-4fdc-9b3e-02001088f570	TypeError:Note.findOne(...).exec(...).lean is not a function	undefined	/users	undefined
 2023-07-07/18:12:27	0a856b70-80f3-4e33-a511-31e97258aa81	SyntaxError:Unexpected token } in JSON at position 49	undefined	/users	undefined
 2023-07-07/18:13:49	4d2e49de-ba73-4b84-ad4e-ab0c2aa6ec1d	SyntaxError:Unexpected token } in JSON at position 49	undefined	/users	undefined
+2023-07-28/14:36:18	81a1d227-2721-4489-ad25-929bdcb2aa34	Error:Not Allow By CORS!	undefined	/users	http://localhost:5173
+2023-07-28/16:28:48	1fa23603-aaa9-480c-b60f-92d896c22390	MongoServerSelectionError:connection <monitor> to 52.220.126.202:27017 closed	undefined	/users	http://localhost:5173
+2023-07-28/17:59:48	74a7e255-9672-43e9-997d-2cd952b569e2	MongoServerSelectionError:getaddrinfo EAI_AGAIN ac-cf7vzaz-shard-00-00.gaa7mnp.mongodb.net	undefined	/users	http://localhost:5173
+2023-07-28/21:33:55	78e99bda-662d-4564-af02-a9afedaf5402	MongoServerSelectionError:connection <monitor> to 52.220.126.202:27017 closed	undefined	/notes	http://localhost:5173
+2023-07-28/22:13:42	b4bd7752-49b5-486e-acdb-aa29c7cec2df	SyntaxError:Unexpected end of JSON input	undefined	/notes	undefined
+2023-07-28/22:15:03	75004a50-f028-4829-827d-52e0b40244ce	SyntaxError:Unexpected token } in JSON at position 73	undefined	/notes	undefined
