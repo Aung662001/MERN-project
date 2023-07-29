@@ -6,8 +6,11 @@ import Dashboard from "./components/Dashboard";
 import NotFound from "./components/NotFound";
 import Welcome from "./features/auth/Welcome";
 import NotesList from "./features/notes/NotesList";
-import Users from "./features/users/UsersList";
-
+import UsersList from "./features/users/UsersList";
+import NewNote from "./features/notes/NewNote";
+import EditNote from "./features/notes/EditNote";
+import NewUserFrom from "./features/users/NewUserFrom";
+import EditUser from "./features/users/EditUser";
 function App() {
   return (
     <Routes>
@@ -16,11 +19,15 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="dash" element={<Dashboard />}>
           <Route index element={<Welcome />} />
+          <Route path="users">
+            <Route index element={<UsersList />} />
+            <Route path=":id" element={<EditUser />} />
+            <Route path="new" element={<NewUserFrom />} />
+          </Route>
           <Route path="notes">
             <Route index element={<NotesList />} />
-          </Route>
-          <Route path="users">
-            <Route index element={<Users />} />
+            <Route path=":id" element={<EditNote />} />
+            <Route path="new" element={<NewNote />} />
           </Route>
         </Route>
       </Route>
