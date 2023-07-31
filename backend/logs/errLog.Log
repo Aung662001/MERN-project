@@ -14,3 +14,7 @@
 2023-07-28/21:33:55	78e99bda-662d-4564-af02-a9afedaf5402	MongoServerSelectionError:connection <monitor> to 52.220.126.202:27017 closed	undefined	/notes	http://localhost:5173
 2023-07-28/22:13:42	b4bd7752-49b5-486e-acdb-aa29c7cec2df	SyntaxError:Unexpected end of JSON input	undefined	/notes	undefined
 2023-07-28/22:15:03	75004a50-f028-4829-827d-52e0b40244ce	SyntaxError:Unexpected token } in JSON at position 73	undefined	/notes	undefined
+2023-08-01/01:12:14	f27422f9-eded-4928-9a86-5a3d59571164	ValidationError:User validation failed: password: Path `password` is required., username: Path `username` is required.	undefined	/notes	http://localhost:5173
+2023-08-01/01:44:45	3e05ae3c-12f0-421f-8f57-2f399f9dfb15	ValidationError:Note validation failed: text: Path `text` is required., title: Path `title` is required., user: Path `user` is required.	undefined	/notes	http://localhost:5173
+2023-08-01/01:46:55	c40d0e5a-e595-497d-b96f-6cea7de382b3	ValidationError:Note validation failed: user: Cast to ObjectId failed for value "alfkjasf" (type string) at path "user" because of "BSONError"	undefined	/notes	http://localhost:5173
+2023-08-01/02:17:08	50f85aa2-2d97-4494-8715-77e8e3a11de8	ReferenceError:note is not defined	undefined	/notes	undefined

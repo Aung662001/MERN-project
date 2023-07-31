@@ -33,14 +33,18 @@ const createNewNotes = asyncHandler(async (req, res) => {
   }
   //create new note
   console.log("creationg note");
-  const note = await Note.create({ user, title, text });
-  console.log(note, "created note");
+  try {
+    const note = await Note.create({ user, title, text });
+    console.log(note, "created note");
+  } catch (err) {
+    console.log(err);
+  }
   if (note) {
     //created successfull
     console.log("note created");
-    return res.status(201).json({ message: "New Note Created" });
+    res.status(201).json({ message: "New Note Created" });
   } else {
-    return res.status(400).json({ message: "Invalid Note Data Received" });
+    res.status(400).json({ message: "Invalid Note Data Received" });
   }
 });
 const updateNote = asyncHandler(async (req, res) => {
