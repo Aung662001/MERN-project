@@ -6,6 +6,8 @@ import { faSave } from "@fortawesome/free-solid-svg-icons";
 import { useAddNewUserMutation } from "./usersApiSlice";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 
+export const USER_REGEX = /^[A-z]{3,30}$/;
+export const PASSWORD_REGEX = /^[A-z0-9!@#$%&]{4,12}$/;
 const NewUserForm = () => {
   const navigate = useNavigate();
   const [addNewUser, { isError, isLoading, isSuccess, error }] =
@@ -14,9 +16,8 @@ const NewUserForm = () => {
   const [password, setPassword] = useState("");
   const [validUserName, setValidUserName] = useState(false);
   const [validPassword, setValidPassword] = useState(false);
-  const [role, setRole] = useState(["Employee"]);
-  const USER_REGEX = /^[A-z]{3,30}$/;
-  const PASSWORD_REGEX = /^[A-z0-9!@#$%&]{4,12}$/;
+  const [showPass, setShowPass] = useState(false);
+  const [roles, setRoles] = useState(["Employee"]);
 
   useEffect(() => {
     setValidUserName(USER_REGEX.test(userName));
@@ -28,7 +29,7 @@ const NewUserForm = () => {
     if (isSuccess) {
       setUserName("");
       setPassword("");
-      setRole([]);
+      setRoles([]);
       navigate("/dash/users");
     }
   }, [isSuccess, navigate]);
@@ -39,16 +40,99 @@ const NewUserForm = () => {
       e.target.selectedOptions,
       (option) => option.value
     );
-    setRole(value);
+    setRoles(value);
   };
-  const canSave = [role.length, validPassword, validUserName].every(Boolean);
+  const canSave = [roles.length, validPassword, validUserName].every(Boolean);
+  console.log(canSave);
   const onUserSaveClick = async (e) => {
     e.preventDefault();
     if (canSave) {
-      await addNewUser({ userName, password, role });
+      await addNewUser({ username: userName, password, roles });
     }
   };
-  return <div>NewUserForm</div>;
+  const options = Object.values(ROLE).map((role) => {
+    return (
+      <option key={role} value={role}>
+        {role}
+      </option>
+    );
+  });
+
+  const errClass = isError ? "errmsg" : "offscreen";
+  const validUserClass = !validUserName ? "form__input--incomplete" : "";
+  const validPasswordClass = !validPassword ? "form__input--incomplete" : "";
+  const validRoleClass = !roles.length ? "form__input--incomplete" : "";
+  const content = (
+    <>
+      <p className={errClass}>{error?.data?.message}</p>
+
+      <form action="" className="form" onSubmit={onUserSaveClick}>
+        <div className="form__title-row">
+          <h2>New User</h2>
+          <div className="form__action-buttons">
+            <button className="icon-button" title="Save" disabled={!canSave}>
+              <FontAwesomeIcon icon={faSave} />
+            </button>
+          </div>
+        </div>
+        <label htmlFor="username" className="form-label">
+          UserName: <span className="nowrap">[3-20 letters]</span>
+        </label>
+        <input
+          type="text"
+          className={`form__input ${validUserClass}`}
+          id="username"
+          name="username"
+          autoComplete="off"
+          value={userName}
+          onChange={onUserChange}
+        />
+        <label htmlFor="password" className="form__label">
+          Password: <span className="nowrap">[4-12 chars including !@#$%]</span>
+        </label>
+        <input
+          type={showPass ? "text" : "password"}
+          className={`form__input ${validPasswordClass}`}
+          id="password"
+          name="password"
+          value={password}
+          onChange={onPasswordChange}
+        />
+        <span>
+          <input
+            type="checkbox"
+            style={{
+              position: "relative",
+              textAlign: "left",
+              marginRight: "10px",
+            }}
+            id="showpass"
+            name="showpass"
+            checked={showPass}
+            onChange={() => setShowPass(!showPass)}
+          />
+          <label htmlFor="showpass">Show Password</label>
+        </span>
+
+        <label htmlFor="roles" className="form-label">
+          ASSIGNED ROLES:
+        </label>
+        <select
+          type="text"
+          className={`form__select ${validRoleClass}`}
+          name="roles"
+          id="roles"
+          value={roles}
+          onChange={onRoleChange}
+          multiple
+          size={"3"}
+        >
+          {options}
+        </select>
+      </form>
+    </>
+  );
+  return content;
 };
 
 export default NewUserForm;

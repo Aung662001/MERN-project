@@ -11,14 +11,8 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       validateStatus: (response, result) => {
         return response.status === 200 && !result.isError;
       },
-      keepUnusedDataFor: 5,
       transformResponse: (responseData) => {
         const loadedUsers = responseData.map((user) => {
-          //set a property user.id to response and return the user
-          //in this this is not require
-          //if the return dons't contain id or _id and (other => such as:userId)
-          //user.id = user.userId <= must replace like that
-
           user.id = user._id;
           return user;
         });
