@@ -10,7 +10,6 @@ const cors = require("cors");
 const corsOptions = require("./config/corsOption");
 const connectDb = require("./config/dbConn");
 const mongoose = require("mongoose");
-
 connectDb();
 app.use(logger);
 app.use(express.json());

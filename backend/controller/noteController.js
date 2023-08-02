@@ -1,5 +1,6 @@
 const Note = require("../models/Note");
 const User = require("../models/User");
+
 const asyncHandler = require("express-async-handler");
 const getAllNotes = asyncHandler(async (req, res) => {
   const notes = await Note.find().lean();
@@ -17,7 +18,6 @@ const getAllNotes = asyncHandler(async (req, res) => {
 });
 const createNewNotes = asyncHandler(async (req, res) => {
   const { user, title, text } = req.body;
-  console.log(req.body);
   //data vilaidation
   console.log("validation data");
   if (!user || !title || !text) {
@@ -31,14 +31,14 @@ const createNewNotes = asyncHandler(async (req, res) => {
     console.log("duplicate");
     return res.status(400).json({ message: "Note Title already exists" });
   }
-  //create new note
+
+  const noteObj = { user, title, text };
+  console.log(noteObj);
+
   console.log("creationg note");
-  try {
-    const note = await Note.create({ user, title, text });
-    console.log(note, "created note");
-  } catch (err) {
-    console.log(err);
-  }
+  const note = await Note.create(noteObj);
+  console.log(note, "created note");
+
   if (note) {
     //created successfull
     console.log("note created");

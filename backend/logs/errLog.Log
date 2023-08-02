@@ -18,3 +18,24 @@
 2023-08-01/01:44:45	3e05ae3c-12f0-421f-8f57-2f399f9dfb15	ValidationError:Note validation failed: text: Path `text` is required., title: Path `title` is required., user: Path `user` is required.	undefined	/notes	http://localhost:5173
 2023-08-01/01:46:55	c40d0e5a-e595-497d-b96f-6cea7de382b3	ValidationError:Note validation failed: user: Cast to ObjectId failed for value "alfkjasf" (type string) at path "user" because of "BSONError"	undefined	/notes	http://localhost:5173
 2023-08-01/02:17:08	50f85aa2-2d97-4494-8715-77e8e3a11de8	ReferenceError:note is not defined	undefined	/notes	undefined
+2023-08-01/02:23:13	33bd297c-1096-44d6-8006-8118e909003f	SyntaxError:Unexpected string in JSON at position 16	undefined	/users	undefined
+2023-08-02/13:01:55	45886961-9855-4552-9558-412c99430ae2	ReferenceError:note is not defined	undefined	/notes	undefined
+2023-08-02/16:04:27	8b596f94-af75-493f-94f3-c17ad3370713	TypeError:Note.createNewNotes is not a function	undefined	/notes	http://localhost:5173
+2023-08-02/16:12:01	aa427eb6-0de1-435e-ab0e-eabc4c56989e	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-08-02/18:12:12	d17068d0-78ae-47bd-9539-f60a263e06ca	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-08-02/18:12:24	158b0581-9c66-484a-a3d6-b3665ecf2397	ValidationError:Note validation failed: user: Path `user` is required.	undefined	/notes	http://localhost:5173
+2023-08-02/18:12:24	d5d11cb5-a7a0-4d5d-a933-8cf13e99c114	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-08-02/18:12:33	630273c1-1d52-4ad3-99b1-440cae66f592	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-08-02/18:12:39	133de6ce-7b71-403b-8add-0a3e39cfb659	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-08-02/18:12:54	511cc97d-8492-4e53-a78e-6da2a481b803	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-08-02/18:13:09	2c3b76fc-8bfd-4cc1-862a-67a9a959fc79	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-08-02/18:13:24	870e5874-1c9a-4ada-80fc-a388d098bf7f	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-08-02/18:13:39	8e7e6733-7712-4219-944e-64fe016fa0a5	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-08-02/18:13:52	01013b95-a495-43cd-9199-32d57374e716	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-08-02/18:13:55	7367203f-cb22-4b80-931e-06ca92e8ccfa	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-08-02/18:13:55	e04f1dfc-3dde-4814-b418-7fca041dcc3e	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-08-02/18:14:10	959c7ff0-750e-43fb-b9ac-f41d554b9f05	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-08-02/18:14:25	4cc0a45e-bfc0-4c6d-8faf-6a9a7a45f9cc	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-08-02/18:14:40	dd34074d-edf4-4f12-953b-2639f0ce658e	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-08-02/18:14:56	7c24f697-2910-4549-a42c-23e1e669d39a	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-08-02/18:23:38	1d35213a-03ca-40c0-9dcf-12dfd1468de3	ValidationError:Note validation failed: user: Path `user` is required.	undefined	/notes	http://localhost:5173
