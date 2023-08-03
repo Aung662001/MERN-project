@@ -13,21 +13,21 @@ export const notesApiSlice = apiSlice.injectEndpoints({
       validateStatus: (response, result) => {
         return response.status === 200 && !result.isError;
       },
-      transfromResponse: (responseData) => {
-        const loadedPosts = responseData.map((post) => {
-          post.id = post._id;
-          return post;
+      transformResponse: (responseData) => {
+        const loadedNotes = responseData.map((note) => {
+          note.id = note._id;
+          return note;
         });
-        return notesAdapter.setAll(initialState, loadedPosts);
+        return notesAdapter.setAll(initialState, loadedNotes);
       },
-      invalidatesTags: (result, error, tag) => {
-        if (result?.id) {
+      providesTags: (result, error, arg) => {
+        if (result?.ids) {
           return [
-            { type: "Post", id: "LIST" },
-            ...result.ids.map((id) => ({ type: "Post", id })),
+            { type: "Note", id: "LIST" },
+            ...result.ids.map((id) => ({ type: "Note", id })),
           ];
         } else {
-          return { type: "Post", id: "LIST" };
+          return [{ type: "Note", id: "LIST" }];
         }
       },
     }),

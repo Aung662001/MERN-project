@@ -13,6 +13,7 @@ const Users = () => {
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,
   });
+  console.log(users);
   let content;
   if (isLoading) {
     console.log("loading...");
@@ -21,6 +22,7 @@ const Users = () => {
     console.log("error");
     content = <p className="errormsg">{error.message}</p>;
   } else if (isSuccess) {
+    console.log(users, "hello users");
     const { ids } = users;
     const tableContent = ids?.length
       ? ids.map((userId) => <User key={userId} userId={userId} />)

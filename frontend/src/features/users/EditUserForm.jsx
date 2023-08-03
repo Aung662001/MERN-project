@@ -27,7 +27,6 @@ const EditUserForm = ({ user }) => {
   const [roles, setRoles] = useState([...user.roles]);
   const [active, setActive] = useState(user.active);
   const [showPass, setShowPass] = useState(false);
-  console.log(username, validusername);
   useEffect(() => {
     setValidusername(USER_REGEX.test(username));
   }, [username]);

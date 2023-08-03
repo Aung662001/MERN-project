@@ -4,7 +4,6 @@ import { ROLE } from "../../config/role";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave } from "@fortawesome/free-solid-svg-icons";
 import { useAddNewUserMutation } from "./usersApiSlice";
-import { setupListeners } from "@reduxjs/toolkit/dist/query";
 
 export const USER_REGEX = /^[A-z]{3,30}$/;
 export const PASSWORD_REGEX = /^[A-z0-9!@#$%&]{4,12}$/;
@@ -117,6 +116,7 @@ const NewUserForm = () => {
         <label htmlFor="roles" className="form-label">
           ASSIGNED ROLES:
         </label>
+
         <select
           type="text"
           className={`form__select ${validRoleClass}`}

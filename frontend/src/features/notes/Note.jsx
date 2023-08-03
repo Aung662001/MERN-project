@@ -9,12 +9,12 @@ const Note = ({ noteId }) => {
   if (note) {
     const created = new Date(note.createdAt).toLocaleString();
     const updated = new Date(note.updatedAt).toLocaleString();
-    const handleEdit = () => navigate(`dash/notes/${noteId}`);
+    const handleEdit = () => navigate(`./${noteId}`);
 
     return (
       <tr className="table__row">
         <td className="table__cell note__status">
-          {note.complete ? (
+          {note.completed ? (
             <span className="note__status--complete">Complete</span>
           ) : (
             <span className="note__status--open">Open</span>
