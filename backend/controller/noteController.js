@@ -19,25 +19,20 @@ const getAllNotes = asyncHandler(async (req, res) => {
 const createNewNotes = asyncHandler(async (req, res) => {
   const { user, title, text } = req.body;
   //data vilaidation
-  console.log("validation data");
   if (!user || !title || !text) {
     return res.status(400).json({ message: "All fields are required" });
   }
   //duplicate check
-  console.log("check duplicate");
   const duplicate = await Note.findOne({ title }).lean().exec();
 
   if (duplicate) {
-    console.log("duplicate");
     return res.status(400).json({ message: "Note Title already exists" });
   }
 
   const noteObj = { user, title, text };
   console.log(noteObj);
 
-  console.log("creationg note");
   const note = await Note.create(noteObj);
-  console.log(note, "created note");
 
   if (note) {
     //created successfull
@@ -48,10 +43,12 @@ const createNewNotes = asyncHandler(async (req, res) => {
   }
 });
 const updateNote = asyncHandler(async (req, res) => {
+  console.log("Updating...");
   //
-  const { id, user, title, text, complete } = req.body;
+  const { id, user, title, text, completed } = req.body;
+  console.log({ id, user, title, text, completed });
   //data validation
-  if (!id || !user || !title || !text || typeof complete !== "boolean") {
+  if (!id || !user || !title || !text || typeof completed !== "boolean") {
     return res.status(400).json({ message: "All fields are required" });
   }
   //search to updae note
@@ -70,12 +67,13 @@ const updateNote = asyncHandler(async (req, res) => {
   note.user = user;
   note.title = title;
   note.text = text;
-  note.complete = complete;
+  note.completed = completed;
 
   const update = await note.save();
   res.json({ message: `${update.title} updated` });
 });
-const deleteNote = asyncHandler(async () => {
+const deleteNote = asyncHandler(async (req, res) => {
+  console.log("Deleteing...");
   const { id } = req.body;
   //data validation
   if (!id) {

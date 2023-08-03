@@ -39,3 +39,8 @@
 2023-08-02/18:14:40	dd34074d-edf4-4f12-953b-2639f0ce658e	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
 2023-08-02/18:14:56	7c24f697-2910-4549-a42c-23e1e669d39a	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
 2023-08-02/18:23:38	1d35213a-03ca-40c0-9dcf-12dfd1468de3	ValidationError:Note validation failed: user: Path `user` is required.	undefined	/notes	http://localhost:5173
+2023-08-03/15:34:29	2d18e575-e8ff-49b7-a520-97739d71d2ea	MongooseError:document must have an _id before saving	undefined	/notes	http://localhost:5173
+2023-08-03/16:14:56	1e6a6469-7729-46bf-a37a-24a00bcb8b8b	ReferenceError:req is not defined	undefined	/notes	http://localhost:5173
+2023-08-03/16:15:15	17c476fd-1c23-4143-a568-503daad5436d	ReferenceError:req is not defined	undefined	/notes	http://localhost:5173
+2023-08-03/16:16:37	2b58a940-4f29-420a-944e-49e7038d3b02	ReferenceError:req is not defined	undefined	/notes	http://localhost:5173
+2023-08-03/16:21:37	0feb4e3b-8483-45ec-9b9d-b76ea6f49144	ReferenceError:req is not defined	undefined	/notes	http://localhost:5173
