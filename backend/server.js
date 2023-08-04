@@ -17,8 +17,9 @@ app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use("/", express.static(path.join(__dirname, "public")));
 app.use("/", require("./routes/root"));
-app.use("/users", require("./routes/userRouter"));
-app.use("/notes", require("./routes/noteRouter"));
+app.use("/users", require("./routes/userRoute"));
+app.use("/notes", require("./routes/noteRoute"));
+app.use("/auth", require("./routes/authRoute"));
 //404 route
 app.all("*", (req, res) => {
   res.status(404);
@@ -31,7 +32,6 @@ app.all("*", (req, res) => {
   }
 });
 app.use(errorHandler);
-
 mongoose.connection.once("open", () => {
   console.log("Connected To MongoDb");
   app.listen(PORT, () => console.log(`Server is runnint at port ${PORT}`));

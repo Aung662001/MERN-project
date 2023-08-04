@@ -44,3 +44,11 @@
 2023-08-03/16:15:15	17c476fd-1c23-4143-a568-503daad5436d	ReferenceError:req is not defined	undefined	/notes	http://localhost:5173
 2023-08-03/16:16:37	2b58a940-4f29-420a-944e-49e7038d3b02	ReferenceError:req is not defined	undefined	/notes	http://localhost:5173
 2023-08-03/16:21:37	0feb4e3b-8483-45ec-9b9d-b76ea6f49144	ReferenceError:req is not defined	undefined	/notes	http://localhost:5173
+2023-08-04/20:23:31	613a83b6-902d-451b-a4c9-f101ee90c9eb	TypeError:bcrypt is not a function	undefined	/users	http://localhost:5173
+2023-08-04/22:26:08	1d349313-72c7-4038-b58f-8c3c917cd42a	ReferenceError:authorization is not defined	undefined	/notes	undefined
+2023-08-04/22:26:26	2edc4db8-ee07-4f3d-a589-09aae9600327	TypeError:authHeader?.startWith is not a function	undefined	/notes	undefined
+2023-08-04/22:27:07	c6750bf2-e43d-40c1-b634-aec0196330f7	TypeError:authHeader?.startWith is not a function	undefined	/notes	undefined
+2023-08-04/22:30:03	1e8537df-0f65-4dc2-b733-fc97525fc43f	Too Many Requests Too many login attemp! Try again after 1 minute.. /t POST /t/ /t undefined
+2023-08-04/22:30:04	b9cd7d22-8317-45fd-881e-0b59a86ff876	Too Many Requests Too many login attemp! Try again after 1 minute.. /t POST /t/ /t undefined
+2023-08-04/22:30:12	0d261302-3ac1-44cf-9705-f8448a4b3360	Too Many Requests Too many login attemp! Try again after 1 minute.. /t POST /t/ /t undefined
+2023-08-04/22:31:05	6dcd9a21-a3c5-4725-9e82-ddb0399e136d	Too Many Requests Too many login attemp! Try again after 1 minute.. /t POST /t/ /t undefined

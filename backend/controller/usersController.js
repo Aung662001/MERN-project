@@ -69,7 +69,7 @@ const updateUser = asyncHandler(async (req, res) => {
 
   if (password) {
     //hash password
-    user.passowrd = await bcrypt(password, 10);
+    user.passowrd = await bcrypt.hash(password, 10);
   }
   const updatedUser = await user.save();
   res.json({ message: `${updatedUser.username} updated.` });

@@ -21,12 +21,12 @@ const login = asyncHandler(async (req, res) => {
   const accessToken = jwt.sign(
     {
       UserInfo: {
-        "username:": foundUser.username,
+        username: foundUser.username,
         roles: foundUser.roles,
       },
     },
     process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: "10s" }
+    { expiresIn: "1m" }
   );
 
   const refreshToken = jwt.sign(
@@ -45,6 +45,7 @@ const login = asyncHandler(async (req, res) => {
   });
   res.send({ accessToken });
 });
+//refresh Route
 const refresh = asyncHandler(async (req, res) => {
   const cookies = req.cookies;
   if (!cookies?.jwt) return res.statusCode(401);
@@ -68,13 +69,14 @@ const refresh = asyncHandler(async (req, res) => {
             roles: foundUser.roles,
           },
         },
-        process.env.accessToken,
+        process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: "10s" }
       );
       res.json({ accessToken });
     })
   );
 });
+//logout Route
 const logout = async (req, res) => {
   const cookies = req.cookies;
   if (!cookies?.jwt) {
