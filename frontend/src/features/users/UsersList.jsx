@@ -13,14 +13,14 @@ const Users = () => {
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,
   });
-  console.log(users);
+  console.log(error);
   let content;
   if (isLoading) {
     console.log("loading...");
     content = <p>Loading...</p>;
   } else if (isError) {
     console.log("error");
-    content = <p className="errormsg">{error.message}</p>;
+    content = <p className="errmsg">{error.data?.message}</p>;
   } else if (isSuccess) {
     console.log(users, "hello users");
     const { ids } = users;

@@ -18,6 +18,7 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Public />} />
         <Route path="login" element={<Login />} />
+
         <Route element={<Prefetch />}>
           <Route path="dash" element={<Dashboard />}>
             <Route index element={<Welcome />} />

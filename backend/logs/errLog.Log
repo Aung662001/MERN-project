@@ -52,3 +52,12 @@
 2023-08-04/22:30:04	b9cd7d22-8317-45fd-881e-0b59a86ff876	Too Many Requests Too many login attemp! Try again after 1 minute.. /t POST /t/ /t undefined
 2023-08-04/22:30:12	0d261302-3ac1-44cf-9705-f8448a4b3360	Too Many Requests Too many login attemp! Try again after 1 minute.. /t POST /t/ /t undefined
 2023-08-04/22:31:05	6dcd9a21-a3c5-4725-9e82-ddb0399e136d	Too Many Requests Too many login attemp! Try again after 1 minute.. /t POST /t/ /t undefined
+2023-08-10/19:32:49	59a78546-3c0b-4dc7-84b4-3cf719212b78	Error:Cannot set headers after they are sent to the client	undefined	/notes	http://localhost:5173
+2023-08-10/19:33:04	2df4357a-046b-4123-a237-bac6bb639a51	Error:Cannot set headers after they are sent to the client	undefined	/notes	http://localhost:5173
+2023-08-10/19:33:19	4b268b62-1f59-4e3f-acef-086e40704a4c	Error:Cannot set headers after they are sent to the client	undefined	/notes	http://localhost:5173
+2023-08-10/19:33:20	bf73c83d-d29e-44d1-b755-6f5ad4bde1f8	Error:Cannot set headers after they are sent to the client	undefined	/notes	http://localhost:5173
+2023-08-10/19:33:23	9c336d44-5e9b-4992-93b5-49f457dd6189	Error:Cannot set headers after they are sent to the client	undefined	/notes	http://localhost:5173
+2023-08-10/19:33:38	572d3a0e-7cbd-422b-bfd2-6832b0278953	Error:Cannot set headers after they are sent to the client	undefined	/notes	http://localhost:5173
+2023-08-10/19:33:53	3a0a8d62-5410-4e86-b92c-7e4801ab0ee8	Error:Cannot set headers after they are sent to the client	undefined	/notes	http://localhost:5173
+2023-08-10/19:34:08	c88b8875-ae3a-4908-bf5e-b0034e471d28	Error:Cannot set headers after they are sent to the client	undefined	/notes	http://localhost:5173
+2023-08-10/19:34:23	de206879-2360-4777-b654-8ed12c1a7344	Error:Cannot set headers after they are sent to the client	undefined	/notes	http://localhost:5173

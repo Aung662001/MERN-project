@@ -17,7 +17,7 @@ const NotesList = () => {
   if (isLoading) {
     content = <p>Loading...</p>;
   } else if (isError) {
-    content = <p>{error.message}</p>;
+    content = <p className="errmsg">{error.data?.message}</p>;
   } else if (isSuccess) {
     const { ids } = notes;
     const tableContent = ids?.length

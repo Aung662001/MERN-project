@@ -1,7 +1,8 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLoginMutation } from "./authApiSlice";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { setCredentials } from "./authSlice";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -12,19 +13,56 @@ const Login = () => {
   const [errMsg, setErrMsg] = useState("");
   const [login, { isLoading }] = useLoginMutation();
   const errClass = errMsg ? "errmsg" : "offscreen";
+  useEffect(() => {
+    userRef.current.focus();
+  }, []);
+  useEffect(() => {
+    setErrMsg("");
+  }, [userName, password]);
   if (isLoading) {
     return <p>Loading...</p>;
   }
-  const handlerSubmit = () => {};
-  const onUserChange = () => {};
-  const onPasswordChange = () => {};
+
+  const handlerSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await login({ username: userName, password });
+      const { accessToken } = data;
+      console.log(accessToken);
+      dispatch(setCredentials({ accessToken }));
+      setUserName("");
+      setPassword("");
+      navigate("/dash");
+    } catch (err) {
+      if (!err.status) {
+        setErrMsg("No Servrer Response.");
+      }
+      if (err.status === 400) {
+        setErrMsg("User And Password are required.");
+      }
+      if (err.status === 401) {
+        setErrMsg("Unautorized");
+      } else {
+        setErrMsg(err.data?.message);
+      }
+      errRef.current.focus();
+    }
+  };
+  const onUserChange = (e) => {
+    setUserName(e.target.value);
+  };
+  const onPasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
   const content = (
-    <section className="public">
+    <section className="public" style={{ flexGrow: 1 }}>
       <header>
         <h1>Employee Login</h1>
       </header>
-      <main className="login">
-        <p className={errClass}>{errMsg}</p>
+      <main className="login ">
+        <p className={errClass} ref={errRef} aria-live="assertive">
+          {errMsg}
+        </p>
         <form action="" className="form" onSubmit={handlerSubmit}>
           <label htmlFor="username">UserName:</label>
           <input
@@ -47,6 +85,7 @@ const Login = () => {
             id="password"
             name="password"
           />
+          <button className="form__submit-button">Sign In</button>
         </form>
       </main>
       <footer>
@@ -54,7 +93,7 @@ const Login = () => {
       </footer>
     </section>
   );
-  return <div style={{ marginTop: "3rem" }}>{content}</div>;
+  return content;
 };
 
 export default Login;

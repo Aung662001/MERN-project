@@ -10,7 +10,7 @@ const login = asyncHandler(async (req, res) => {
   }
   const foundUser = await User.findOne({ username }).exec();
   if (!foundUser || !foundUser.active) {
-    return res.sendStatus(401);
+    return res.sendStatus(401).json({ message: "Unautorized" });
   }
   const match = bcrypt.compare(password, foundUser.password);
   if (!match) {
@@ -48,7 +48,8 @@ const login = asyncHandler(async (req, res) => {
 //refresh Route
 const refresh = asyncHandler(async (req, res) => {
   const cookies = req.cookies;
-  if (!cookies?.jwt) return res.statusCode(401);
+  if (!cookies?.jwt)
+    return res.statusCode(401).json({ message: "Unautorized" });
 
   const refreshToken = cookies.jwt;
 
@@ -56,11 +57,12 @@ const refresh = asyncHandler(async (req, res) => {
     refreshToken,
     process.env.REFRESH_TOKEN_SECRET,
     asyncHandler(async (err, decoded) => {
-      if (err) return res.sendStatus(401);
+      if (err) return res.sendStatus(401).json({ message: "Unautorized" });
 
       const foundUser = await User.find({ username: decoded.username });
 
-      if (!foundUser) return res.sendStatus(401);
+      if (!foundUser)
+        return res.sendStatus(401).json({ message: "Unautorized" });
 
       const accessToken = jwt.sign(
         {
@@ -79,9 +81,12 @@ const refresh = asyncHandler(async (req, res) => {
 //logout Route
 const logout = async (req, res) => {
   const cookies = req.cookies;
+  console.log(req.cookies);
   if (!cookies?.jwt) {
-    return res.sendStatus(204);
+    console.log("no jwt token");
+    return res.status(204).json({ message: "No Content" });
   }
+  console.log("has jwt token");
   res.clearCookie("jwt", { httpOnly: true, secure: true, sameSite: "none" });
   res.json({ message: "Cookie cleared" });
 };
