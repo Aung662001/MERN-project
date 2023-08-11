@@ -26,7 +26,7 @@ const login = asyncHandler(async (req, res) => {
       },
     },
     process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: "1m" }
+    { expiresIn: "10s" }
   );
 
   const refreshToken = jwt.sign(
@@ -34,7 +34,7 @@ const login = asyncHandler(async (req, res) => {
       username: foundUser.username,
     },
     process.env.REFRESH_TOKEN_SECRET,
-    { expiresIn: "1d" }
+    { expiresIn: "20s" }
   );
 
   res.cookie("jwt", refreshToken, {
@@ -48,22 +48,19 @@ const login = asyncHandler(async (req, res) => {
 //refresh Route
 const refresh = asyncHandler(async (req, res) => {
   const cookies = req.cookies;
-  if (!cookies?.jwt)
-    return res.statusCode(401).json({ message: "Unautorized" });
+  if (!cookies?.jwt) {
+    return res.statusCode(401).json({ message: "No cookies found" });
+  }
 
   const refreshToken = cookies.jwt;
-
   jwt.verify(
     refreshToken,
     process.env.REFRESH_TOKEN_SECRET,
     asyncHandler(async (err, decoded) => {
-      if (err) return res.sendStatus(401).json({ message: "Unautorized" });
+      if (err) return res.status(403).json({ message: "Unautorized" });
 
       const foundUser = await User.find({ username: decoded.username });
-
-      if (!foundUser)
-        return res.sendStatus(401).json({ message: "Unautorized" });
-
+      if (!foundUser) return res.status(401).json({ message: "Unautorized" });
       const accessToken = jwt.sign(
         {
           UserInfo: {
@@ -81,12 +78,9 @@ const refresh = asyncHandler(async (req, res) => {
 //logout Route
 const logout = async (req, res) => {
   const cookies = req.cookies;
-  console.log(req.cookies);
   if (!cookies?.jwt) {
-    console.log("no jwt token");
     return res.status(204).json({ message: "No Content" });
   }
-  console.log("has jwt token");
   res.clearCookie("jwt", { httpOnly: true, secure: true, sameSite: "none" });
   res.json({ message: "Cookie cleared" });
 };
