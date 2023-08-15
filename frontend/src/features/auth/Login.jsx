@@ -3,6 +3,7 @@ import { useLoginMutation } from "./authApiSlice";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { setCredentials } from "./authSlice";
+import Persist from "../../hooks/Persist";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ const Login = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
+  const [persist, setPersist] = Persist();
   const [login, { isLoading }] = useLoginMutation();
   const errClass = errMsg ? "errmsg" : "offscreen";
   useEffect(() => {
@@ -54,6 +56,7 @@ const Login = () => {
   const onPasswordChange = (e) => {
     setPassword(e.target.value);
   };
+  const onToogle = () => setPersist((prev) => (prev = !prev));
   const content = (
     <section className="public" style={{ flexGrow: 1 }}>
       <header>
@@ -86,6 +89,17 @@ const Login = () => {
             name="password"
           />
           <button className="form__submit-button">Sign In</button>
+          <label htmlFor="persist" className="form__persist">
+            <input
+              type="checkbox"
+              className="form__checkbox"
+              onChange={onToogle}
+              checked={persist}
+              id="persist"
+              name="persist"
+            />
+            Trust This Device
+          </label>
         </form>
       </main>
       <footer>

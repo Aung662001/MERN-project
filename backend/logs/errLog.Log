@@ -61,3 +61,5 @@
 2023-08-10/19:33:53	3a0a8d62-5410-4e86-b92c-7e4801ab0ee8	Error:Cannot set headers after they are sent to the client	undefined	/notes	http://localhost:5173
 2023-08-10/19:34:08	c88b8875-ae3a-4908-bf5e-b0034e471d28	Error:Cannot set headers after they are sent to the client	undefined	/notes	http://localhost:5173
 2023-08-10/19:34:23	de206879-2360-4777-b654-8ed12c1a7344	Error:Cannot set headers after they are sent to the client	undefined	/notes	http://localhost:5173
+2023-08-15/14:50:12	9fd89806-13a5-4074-81ce-3b2defc7fcc6	Error:Cannot set headers after they are sent to the client	undefined	/auth	http://localhost:5173
+2023-08-15/14:50:39	a92c2c03-a5df-4bc7-a07b-d6e81c4d1547	Error:Cannot set headers after they are sent to the client	undefined	/auth	http://localhost:5173
