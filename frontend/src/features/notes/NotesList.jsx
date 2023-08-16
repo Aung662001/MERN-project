@@ -13,7 +13,6 @@ const NotesList = () => {
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,
   });
-  console.log(error);
   let content;
   if (isLoading) {
     content = <p>Loading...</p>;
