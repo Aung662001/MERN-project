@@ -3,7 +3,9 @@ import { useAddNewNoteMutation } from "./notesApiSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 const NewNoteForm = ({ users }) => {
+  const { isManager, isAdmin, username } = useAuth();
   const navigate = useNavigate();
   const [newNote, { isError, isSuccess, isLoading, error }] =
     useAddNewNoteMutation();
@@ -12,13 +14,14 @@ const NewNoteForm = ({ users }) => {
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
 
-  const option = users.map((user) => {
+  let option = users.map((user) => {
     return (
       <option key={user.id} value={user.id}>
         {user.username}
       </option>
     );
   });
+
   const userClickSubmit = async (e) => {
     e.preventDefault();
     await newNote({ user: userId, title, text });

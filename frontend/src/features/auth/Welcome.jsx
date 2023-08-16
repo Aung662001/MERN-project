@@ -14,7 +14,7 @@ const Welcome = () => {
         <Link to={"/dash/notes"}>View techNotes</Link>
       </p>
       <p>
-        <Link to={"/dash/users"}>View User Setting</Link>
+        <Link to={"/dash/notes/new"}>Create New Note </Link>
       </p>
       {(isManager || isAdmin) && (
         <p>
@@ -23,7 +23,7 @@ const Welcome = () => {
       )}
       {(isManager || isAdmin) && (
         <p>
-          <Link to={"/dash/notes/new"}>Create New Note </Link>
+          <Link to={"/dash/users"}>View User Setting</Link>
         </p>
       )}
     </section>

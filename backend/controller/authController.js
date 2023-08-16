@@ -50,7 +50,7 @@ const login = asyncHandler(async (req, res) => {
 const refresh = asyncHandler(async (req, res) => {
   const cookies = req.cookies;
   if (!cookies?.jwt) {
-    return res.status(401).json({ message: "No cookies found" });
+    return res.status(401).json({ message: "Something Wrong! " });
   }
 
   const refreshToken = cookies.jwt;

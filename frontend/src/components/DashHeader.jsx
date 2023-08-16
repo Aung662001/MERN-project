@@ -4,7 +4,7 @@ import {
   faRightFromBracket,
   faFileCirclePlus,
   faUserPlus,
-  faUser,
+  faUserGear,
   faFile,
 } from "@fortawesome/free-solid-svg-icons";
 import { useSendLogoutMutation } from "../features/auth/authApiSlice";
@@ -64,20 +64,18 @@ const DashHeader = () => {
     if (!USERS_REGEX.test(pathname) && pathname.includes("/dash")) {
       usersButton = (
         <button className="icon-button" title="Users" onClick={onUsersClick}>
-          <FontAwesomeIcon icon={faUser} />
+          <FontAwesomeIcon icon={faUserGear} />
         </button>
       );
     }
   }
   let notesButton = null;
-  if (isAdmin || isManger) {
-    if (!NOTES_REGEX.test(pathname) && pathname.includes("/dash")) {
-      notesButton = (
-        <button className="icon-button" title="Notes" onClick={onNotesClick}>
-          <FontAwesomeIcon icon={faFile} />
-        </button>
-      );
-    }
+  if (!NOTES_REGEX.test(pathname) && pathname.includes("/dash")) {
+    notesButton = (
+      <button className="icon-button" title="Notes" onClick={onNotesClick}>
+        <FontAwesomeIcon icon={faFile} />
+      </button>
+    );
   }
   const errClass = isError ? "errmsg" : "offscreen";
   let navButton;
@@ -86,9 +84,9 @@ const DashHeader = () => {
   } else {
     navButton = (
       <>
-        {notesButton}
         {usersButton}
         {newUserButton}
+        {notesButton}
         {newNoteButton}
         {logoutButton}
       </>

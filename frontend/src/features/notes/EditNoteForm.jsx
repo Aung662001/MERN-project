@@ -142,6 +142,17 @@ const EditNoteForm = ({ note, users }) => {
           />
         </label>
       </form>
+      <div
+        style={{
+          marginTop: "20px",
+          gap: "10px",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <p>Created: {new Date(note.createdAt).toLocaleString()}</p>
+        <p>Updated: {new Date(note.updatedAt).toLocaleString()}</p>
+      </div>
     </>
   );
   return content;

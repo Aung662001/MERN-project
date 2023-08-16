@@ -13,6 +13,8 @@ import NewUserForm from "./features/users/NewUserForm";
 import EditUser from "./features/users/EditUser";
 import Prefetch from "./features/auth/Prefetch";
 import PersistLogin from "./features/auth/PersistLogin";
+import { ROLE } from "./config/role";
+import RequireAuth from "./features/auth/RequireAuth";
 function App() {
   return (
     <Routes>
@@ -21,18 +23,28 @@ function App() {
         <Route path="login" element={<Login />} />
 
         <Route element={<PersistLogin />}>
-          <Route element={<Prefetch />}>
-            <Route path="dash" element={<Dashboard />}>
-              <Route index element={<Welcome />} />
-              <Route path="users">
-                <Route index element={<UsersList />} />
-                <Route path=":id" element={<EditUser />} />
-                <Route path="new" element={<NewUserForm />} />
-              </Route>
-              <Route path="notes">
-                <Route index element={<NotesList />} />
-                <Route path=":id" element={<EditNote />} />
-                <Route path="new" element={<NewNote />} />
+          <Route
+            element={<RequireAuth accessRoles={[...Object.values(ROLE)]} />}
+          >
+            <Route element={<Prefetch />}>
+              <Route path="dash" element={<Dashboard />}>
+                <Route index element={<Welcome />} />
+                <Route
+                  element={
+                    <RequireAuth accessRoles={[ROLE.Admin, ROLE.Manager]} />
+                  }
+                >
+                  <Route path="users">
+                    <Route index element={<UsersList />} />
+                    <Route path=":id" element={<EditUser />} />
+                    <Route path="new" element={<NewUserForm />} />
+                  </Route>
+                </Route>
+                <Route path="notes">
+                  <Route index element={<NotesList />} />
+                  <Route path=":id" element={<EditNote />} />
+                  <Route path="new" element={<NewNote />} />
+                </Route>
               </Route>
             </Route>
           </Route>
