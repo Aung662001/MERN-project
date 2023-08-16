@@ -28,13 +28,18 @@ const Login = () => {
   const handlerSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await login({ username: userName, password });
-      const { accessToken } = data;
-      console.log(accessToken);
-      dispatch(setCredentials({ accessToken }));
-      setUserName("");
-      setPassword("");
-      navigate("/dash");
+      const response = await login({ username: userName, password });
+      if (response.error) {
+        setErrMsg(response?.error?.data?.message);
+      } else {
+        const { data } = response;
+        const { accessToken } = data;
+        console.log(accessToken);
+        dispatch(setCredentials({ accessToken }));
+        setUserName("");
+        setPassword("");
+        navigate("/dash");
+      }
     } catch (err) {
       if (!err.status) {
         setErrMsg("No Servrer Response.");

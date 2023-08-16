@@ -12,11 +12,12 @@ const login = asyncHandler(async (req, res) => {
   if (!foundUser || !foundUser.active) {
     return res.status(401).json({ message: "Unautorized" });
   }
-  const match = bcrypt.compare(password, foundUser.password);
+  console.log(password, foundUser.password);
+  const match = await bcrypt.compare(password, foundUser.password);
   if (!match) {
     return res
       .status(401)
-      .json({ message: "UserName and Password Are Not Match" });
+      .json({ message: "UserName and Password are Not Match!" });
   }
   const accessToken = jwt.sign(
     {
@@ -26,7 +27,7 @@ const login = asyncHandler(async (req, res) => {
       },
     },
     process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: "10s" }
+    { expiresIn: "15m" }
   );
 
   const refreshToken = jwt.sign(
@@ -34,7 +35,7 @@ const login = asyncHandler(async (req, res) => {
       username: foundUser.username,
     },
     process.env.REFRESH_TOKEN_SECRET,
-    { expiresIn: "20s" }
+    { expiresIn: "7d" }
   );
 
   res.cookie("jwt", refreshToken, {
@@ -69,7 +70,7 @@ const refresh = asyncHandler(async (req, res) => {
           },
         },
         process.env.ACCESS_TOKEN_SECRET,
-        { expiresIn: "10s" }
+        { expiresIn: "15m" }
       );
       res.json({ accessToken });
     })

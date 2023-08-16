@@ -5,7 +5,7 @@ import { useRefreshMutation } from "./authApiSlice";
 import usePersist from "../../hooks/Persist";
 import { Link, Outlet } from "react-router-dom";
 
-const PresistLogin = () => {
+const PersistLogin = () => {
   const token = useSelector(selectCurrentToken);
   const [refresh, { isError, isLoading, isSuccess, error, isUninitialized }] =
     useRefreshMutation();
@@ -45,11 +45,11 @@ const PresistLogin = () => {
     console.log("success");
     content = <Outlet />;
   } else if (token && isUninitialized) {
-    console.log(isUninitialized, "token", token);
+    console.log("isUninitialized:", isUninitialized, "token:", token);
     content = <Outlet />;
   }
 
   return content;
 };
 
-export default PresistLogin;
+export default PersistLogin;
