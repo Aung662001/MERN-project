@@ -2,6 +2,8 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useGetNotesQuery } from "./notesApiSlice";
 import Note from "./Note";
 import useAuth from "../../hooks/useAuth";
+import ClipLoader from "react-spinners/ClipLoader";
+import { override } from "./EditNote";
 const NotesList = () => {
   const { username, isManager, isAdmin } = useAuth();
   const {
@@ -17,7 +19,18 @@ const NotesList = () => {
   });
   let content;
   if (isLoading) {
-    content = <p>Loading...</p>;
+    content = (
+      <p>
+        <ClipLoader
+          color={"#ffffff"}
+          loading={true}
+          cssOverride={override}
+          size={150}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </p>
+    );
   } else if (isError) {
     content = <p className="errmsg">{error?.data?.message}</p>;
   } else if (isSuccess) {

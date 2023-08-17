@@ -1,10 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
-import { selectNoteById } from "./notesApiSlice";
+import { selectNoteById, useGetNotesQuery } from "./notesApiSlice";
 import { useNavigate } from "react-router-dom";
+import { memo } from "react";
 const Note = ({ noteId }) => {
-  const note = useSelector((state) => selectNoteById(state, noteId));
+  // const note = useSelector((state) => selectNoteById(state, noteId));
+  //change in prefetch =>subscribe manully to build in function
+  //so change to above useSelector to useGetNotesQuery
+  const { note } = useGetNotesQuery("nodesList", {
+    selectFromResult: ({ data }) => ({ note: data?.entities[noteId] }),
+  });
+
   const navigate = useNavigate();
   if (note) {
     const created = new Date(note.createdAt).toLocaleString();
@@ -36,5 +43,5 @@ const Note = ({ noteId }) => {
     return null;
   }
 };
-
-export default Note;
+const memorizedNote = memo(Note);
+export default memorizedNote;

@@ -31,6 +31,7 @@ app.all("*", (req, res) => {
     res.type("txt").send("404 page not found");
   }
 });
+
 app.use(errorHandler);
 mongoose.connection.once("open", () => {
   console.log("Connected To MongoDb");

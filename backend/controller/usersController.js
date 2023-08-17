@@ -13,11 +13,14 @@ const getAllUsers = asyncHandler(async (req, res) => {
 const createNewUser = asyncHandler(async (req, res) => {
   const { username, password, roles } = req.body;
   //data validate
-  if (!username || !password || !Array.isArray(roles) || !roles.length) {
+  if (!username || !password) {
     return res.status(400).json({ message: "All fields are require." });
   }
   //check for duplicate
-  const duplicate = await User.findOne({ username }).lean().exec();
+  const duplicate = await User.findOne({ username })
+    .collation({ locale: "en", strength: 2 })
+    .lean()
+    .exec();
 
   if (duplicate) {
     return res.status(409).json({ message: "User already exists." });
@@ -26,7 +29,10 @@ const createNewUser = asyncHandler(async (req, res) => {
   //password hash
   const hashPassword = await bcrypt.hash(password, 10);
 
-  const userObj = { username, password: hashPassword, roles };
+  const userObj =
+    !Array.isArray(roles) || !roles.length
+      ? { username, password: hashPassword }
+      : { username, password: hashPassword, roles };
 
   //create new user
   const user = await User.create(userObj);
@@ -59,7 +65,10 @@ const updateUser = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "User Not Found." });
   }
   //duplicate
-  const duplicate = await User.findOne({ username }).lean().exec();
+  const duplicate = await User.findOne({ username })
+    .collation({ locale: "en", strength: 2 })
+    .lean()
+    .exec();
   if (duplicate && duplicate?._id.toString() !== id) {
     return res.status(409).json({ message: `UserName Already Exists.` });
   }
