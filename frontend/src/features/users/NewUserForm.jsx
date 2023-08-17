@@ -42,7 +42,6 @@ const NewUserForm = () => {
     setRoles(value);
   };
   const canSave = [roles.length, validPassword, validUserName].every(Boolean);
-  console.log(canSave);
   const onUserSaveClick = async (e) => {
     e.preventDefault();
     if (canSave) {
