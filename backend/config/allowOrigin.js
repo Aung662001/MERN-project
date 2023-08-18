@@ -1,7 +1,2 @@
-const allowOrigins = [
-  "http://localhost:3500",
-  "http://www.davedrepairshop.com",
-  "http://davedrepairshop.com",
-  "http://localhost:5173",
-];
+const allowOrigins = ["https://repairshop-58zg.onrender.com"];
 module.exports = allowOrigins;
