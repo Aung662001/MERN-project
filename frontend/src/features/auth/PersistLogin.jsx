@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { selectCurrentToken } from "./authSlice";
 import { useRefreshMutation } from "./authApiSlice";
 import usePersist from "../../hooks/Persist";
+import ClipLoader from "react-spinners/ClipLoader";
 import { Link, Outlet } from "react-router-dom";
 
 const PersistLogin = () => {
@@ -33,7 +34,15 @@ const PersistLogin = () => {
     content = <Outlet />;
   } else if (isLoading) {
     console.log("loading");
-    content = <p>Loading...</p>;
+    content = (
+      <ClipLoader
+        color={"#ffffff"}
+        loading={true}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    );
   } else if (isError) {
     console.log("error");
     content = (

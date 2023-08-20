@@ -1,5 +1,6 @@
 import User from "./User";
 import { useGetUsersQuery } from "./usersApiSlice";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Users = () => {
   const {
@@ -15,7 +16,15 @@ const Users = () => {
   });
   let content;
   if (isLoading) {
-    content = <p>Loading...</p>;
+    content = (
+      <ClipLoader
+        color={"#ffffff"}
+        loading={true}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    );
   } else if (isError) {
     console.log("error");
     content = <p className="errmsg">{error.data?.message}</p>;

@@ -3,6 +3,8 @@ import { useLoginMutation } from "./authApiSlice";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { setCredentials } from "./authSlice";
+import ClipLoader from "react-spinners/ClipLoader";
+
 import Persist from "../../hooks/Persist";
 const Login = () => {
   const navigate = useNavigate();
@@ -22,7 +24,15 @@ const Login = () => {
     setErrMsg("");
   }, [userName, password]);
   if (isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <ClipLoader
+        color={"#ffffff"}
+        loading={true}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    );
   }
 
   const handlerSubmit = async (e) => {
