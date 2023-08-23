@@ -64,3 +64,4 @@
 2023-08-15/14:50:12	9fd89806-13a5-4074-81ce-3b2defc7fcc6	Error:Cannot set headers after they are sent to the client	undefined	/auth	http://localhost:5173
 2023-08-15/14:50:39	a92c2c03-a5df-4bc7-a07b-d6e81c4d1547	Error:Cannot set headers after they are sent to the client	undefined	/auth	http://localhost:5173
 2023-08-16/13:50:05	5e356b5c-3cff-460c-9b19-ef85f9f1b74c	Too Many Requests Too many login attemp! Try again after 1 minute.. /t POST /t/ /t undefined
+2023-08-20/12:55:37	9550e030-7efc-4b96-b870-e120f1b30772	Error:Not Allow By CORS!	undefined	/auth	http://localhost:5173
