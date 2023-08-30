@@ -36,11 +36,7 @@ const createNewUser = asyncHandler(async (req, res) => {
 
   //create new user
   const user = await User.create(userObj);
-  await Note.create({
-    user: "64ca003237e4eb86575fdc3c",
-    title: "bala bala",
-    text: "hooooooo",
-  });
+
   if (user) {
     //created
     res.status(201).json({ message: `New User ${username} is created.` });
