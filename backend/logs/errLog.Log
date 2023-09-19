@@ -65,3 +65,19 @@
 2023-08-15/14:50:39	a92c2c03-a5df-4bc7-a07b-d6e81c4d1547	Error:Cannot set headers after they are sent to the client	undefined	/auth	http://localhost:5173
 2023-08-16/13:50:05	5e356b5c-3cff-460c-9b19-ef85f9f1b74c	Too Many Requests Too many login attemp! Try again after 1 minute.. /t POST /t/ /t undefined
 2023-08-20/12:55:37	9550e030-7efc-4b96-b870-e120f1b30772	Error:Not Allow By CORS!	undefined	/auth	http://localhost:5173
+2023-09-19/15:23:03	3b9de3d4-0e07-4e8b-aad4-023017818d78	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-09-19/15:23:42	12d5f383-5381-42a4-9810-aa35751cefe3	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-09-19/15:23:46	69c00732-4d2d-4e7b-9b55-781316c57d5c	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-09-19/15:24:26	952cd135-033c-4484-badb-192233f276a8	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-09-19/15:24:27	5338b6b9-9b05-42a6-8a35-56c651028dbc	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-09-19/15:24:42	00f21ed6-1799-48d9-99d3-499c348280b4	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-09-19/15:24:53	2c003865-0d70-4805-9d69-8003123696d0	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-09-19/15:24:53	1ed4e13d-7b29-46dc-b611-e639892eb73f	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-09-19/15:24:53	a537c400-c09c-4b45-a7c0-e929eb04f0ea	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-09-19/15:25:06	4f1381d9-4b00-434f-8eb3-9ca506147e6a	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-09-19/15:25:17	67df6032-b7c6-4337-98e4-f9cdd91a215a	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-09-19/15:25:24	ed31fef2-72e3-4a46-8cee-d7e77bc20256	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-09-19/15:25:40	9eb0f8f4-481d-40cc-abc4-fdf55af96fbf	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-09-19/15:25:55	4647a080-f1be-4555-8d18-e4907881f29f	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-09-19/15:26:10	56b4ec07-8fb1-4033-8a0c-c72c77bc36ba	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
+2023-09-19/15:26:25	d012ce17-30a6-447b-b8ec-0535a8b6f8e8	TypeError:Cannot read properties of null (reading 'username')	undefined	/notes	http://localhost:5173
